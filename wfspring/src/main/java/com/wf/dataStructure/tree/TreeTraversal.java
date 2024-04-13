@@ -12,6 +12,10 @@ import javax.swing.tree.TreeModel;
  * @Version 1.0
  * @Since 1.0
  */
+
+/**
+ * 二叉树：前序遍历  中序遍历  后序遍历
+ */
 public class TreeTraversal {
 
     public static void main(String[] args) {
