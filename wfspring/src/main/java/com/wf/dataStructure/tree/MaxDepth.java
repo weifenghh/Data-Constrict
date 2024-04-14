@@ -9,6 +9,7 @@ package com.wf.dataStructure.tree;
  */
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 最大深度
@@ -21,8 +22,30 @@ public class MaxDepth {
                 1,
                 new TreeNode(new TreeNode(4), 2, new TreeNode(3))
         );
-        int count = maxDepth1(treeNode);
+        int count = maxDepth2(treeNode);
         System.out.println(count);
+    }
+
+    public static int maxDepth2(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int depth = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode poll = queue.poll();
+                System.out.print(poll.val + "\t");
+                if(poll.left != null){
+                    queue.offer(poll.left);
+                }
+                if(poll.right != null){
+                    queue.offer(poll.right);
+                }
+            }
+            System.out.println();
+            depth++;
+        }
+        return depth;
     }
 
 
