@@ -9,6 +9,10 @@ import java.util.Arrays;
  * @Version 1.0
  * @Since 1.0
  */
+
+/**
+ * 根据前中遍历建树
+ */
 public class PreOrInTraversal {
 
 //    public class TreeNode {
