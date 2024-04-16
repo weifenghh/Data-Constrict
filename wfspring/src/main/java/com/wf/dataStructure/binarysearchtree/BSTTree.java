@@ -81,13 +81,66 @@ public class BSTTree<K extends Comparable<K>,V> {
         }
         return p.value;
     }
+    public V max(BSTNode node){
+        if(node == null){
+            return null;
+        }
+        BSTNode<K,V> p = node;
+        while(p.right != null){
+            p = p.right;
+        }
+        return p.value;
+    }
 
-    public void put(K key, Object value){
-
+    public void put(K key, V value){
+        BSTNode<K,V> node = root;
+        BSTNode<K,V> parent = null;
+        int result = key.compareTo(node.key);
+        while(node != null){
+            parent = node;
+            if(result < 0){
+                node = node.left;
+            }else if(result > 0){
+                node = node.right;
+            }else{
+                node.value = value;
+                return;
+            }
+        }
+        if(parent == null){
+            root = new BSTNode<>(key,value);
+            return;
+        }
+        BSTNode<K,V> insert = new BSTNode<>(key,value);
+        int i = key.compareTo(parent.key);
+        if(i < 0){
+            parent.left = insert;
+        }else if(i > 0){
+            parent.right = insert;
+        }
     }
 
     public V successor(K key){
-        return null;
+        BSTNode<K,V> p = root;
+        BSTNode<K,V> ancestorFormLeft = null;
+        int result = key.compareTo(p.key);
+        while(p != null){
+            if(result < 0) {
+                p = p.left;
+            }else if(result > 0) {
+                ancestorFormLeft = p;
+                p = p.right;
+            }else{
+                break;
+            }
+        }
+        if( p == null){
+            return null;
+        }
+        if(p.left != null){
+            return max(p.left);
+        }
+        return ancestorFormLeft != null ? ancestorFormLeft.value : null;
     }
 
     public V predecessor(K key){

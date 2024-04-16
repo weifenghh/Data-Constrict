@@ -1,5 +1,7 @@
 package com.wf.dataStructure.binarysearchtree;
 
+import javax.management.modelmbean.InvalidTargetObjectTypeException;
+
 /**
  * @Author 玉米排骨汤
  * @Date 2024/4/15 9:11
@@ -15,6 +17,7 @@ public class TestBSTTree {
 //        System.out.println(tree.get("b"));
 //        System.out.println(tree.get("c"));
 //        System.out.println(tree.get("d"));
+        tree.put("i","mike");
 
         System.out.println(tree.min());
         System.out.println(tree.max());
